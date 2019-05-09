@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+//Define styles
+const inline = {
+  display: 'inline-block'
+}
+
+//Component Main
 class EntryAddForm extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +70,7 @@ class EntryAddForm extends Component {
                 })}
             />
 
-            <div onClick={this.props.onClick}>
+            <div style={inline} onClick={this.props.onClick}>
                 <button onClick= {this.addEntry} className="btn btn-primary m-1"> Add entry </button>
             </div>
 

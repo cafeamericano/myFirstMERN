@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import EntryAddForm from './entryAddForm'
 import DeleteEntryButton from './deleteEntryButton'
 
+//Define styles
+
 class AllEntriesList extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +39,7 @@ class AllEntriesList extends Component {
 
   //Predefine how we will visually layout each entry to the user
   renderEntry = ({id, date, subject, hours}) => 
-    <div className="card m-3 p-3" key={id}>
+    <div className="card bg-warning m-3 p-3" key={id}>
         <div className="row">
           <div className="col">{date}</div>
           <div className="col">{subject}</div>
