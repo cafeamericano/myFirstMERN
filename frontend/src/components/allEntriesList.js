@@ -4,6 +4,14 @@ import DeleteEntryButton from './deleteEntryButton'
 
 //Define styles
 
+let greenBorder = {
+  border: '2px green solid',
+}
+
+let paperYellow = {
+  backgroundColor: 'rgb(255, 249, 198)'
+}
+
 class AllEntriesList extends Component {
   constructor(props) {
     super(props);
@@ -39,24 +47,25 @@ class AllEntriesList extends Component {
 
   //Predefine how we will visually layout each entry to the user
   renderEntry = ({id, date, subject, hours}) => 
-    <div className="card bg-warning m-3 p-3" key={id}>
-        <div className="row">
-          <div className="col">{date}</div>
-          <div className="col">{subject}</div>
-          <div className="col">{hours}</div>
-          <DeleteEntryButton identifier={id} className="col" onClick={this.handleClick} />
-        </div>
+    <div className="card p-3" style={paperYellow} key={id}>
+          <div>{date}</div>
+          <div>{subject}</div>
+          <div>{hours}</div>
+          <DeleteEntryButton identifier={id} onClick={this.handleClick} />
     </div>
 
   //Prepare the component for visual rendering
   render() {
     const stuffToShow = this.state.entries; //Create an array 'stuffToShow' and fill it with everything that was added to this component's state.entries array
     return(
-        <div className="border border-success p-3">
-            <EntryAddForm onClick={this.handleClick} />
-            <br/>
-            <h3>AllEntriesList Component</h3>
-            {stuffToShow.map(this.renderEntry)} {/*Take everything in our stuffToShow array, then map to a new array the table row specified by the renderEntry function for each record*/}
+        <div className="p-3" style={greenBorder}>
+          <EntryAddForm onClick={this.handleClick} />
+          <br></br>
+
+          <div className="card-columns">
+              {stuffToShow.map(this.renderEntry)} {/*Take everything in our stuffToShow array, then map to a new array the table row specified by the renderEntry function for each record*/}
+          </div>
+
         </div>
     );
   }
