@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AllEntriesList from './components/allEntriesList.js';
+import Main from './components/main.js';
 import Header from './components/header';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
                 <Header/>
                 <br></br>
                 <div className="container">
-                    <AllEntriesList/> {/*Includes entryAddForm as a child*/}
+                    <Main/>
                     <br></br>
                 </div>
           </div>

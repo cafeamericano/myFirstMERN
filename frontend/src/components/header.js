@@ -36,7 +36,7 @@ class Header extends Component {
         <div id="logo" className="p-3" >
             <div className="text-right">
               <h1 style={headerStyle}>Tasks</h1>
-              <small>Powered by React</small>
+              <small>Powered by <strong>React </strong><i class="fab fa-react"></i></small>
             </div>
         </div>
         <div id="colorbars">

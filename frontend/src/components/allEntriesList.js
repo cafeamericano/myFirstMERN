@@ -1,11 +1,16 @@
+//IMPORTS=========================================================================================================================================================
+
 import React, { Component } from 'react';
-import EntryAddForm from './entryAddForm'
+import BackgroundPhoto from './cork-wallet.png';
+
+//Child components
+//import EntryAddForm from './entryAddForm'
 import DeleteEntryButton from './deleteEntryButton'
 
-//Define styles
+//STYLING=========================================================================================================================================================
 
-let greenBorder = {
-  border: '2px green solid',
+let corkBg = {
+  backgroundImage: 'url(' + BackgroundPhoto + ')'
 }
 
 let paperYellow = {
@@ -13,8 +18,11 @@ let paperYellow = {
 }
 
 let dateFormat = {
-  paddingTop: '7px'
+  paddingTop: '7px',
+  fontWeight: 'bold'
 }
+
+//NAME, STATE, AND BINDING=========================================================================================================================================================
 
 class AllEntriesList extends Component {
   constructor(props) {
@@ -26,17 +34,24 @@ class AllEntriesList extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
  
+//LIFECYCLE METHODS=========================================================================================================================================================
+
   //Wait for component to mount before performing the getEntries method
   componentDidMount(){
     this.getEntries();
   }
 
+  componentDidUpdate(){
+    this.getEntries()
+  }
+
+//SELF METHODS=========================================================================================================================================================
+
   //When handleClick is called, do the following
   handleClick() {
     this.getEntries();
     const total = this.state.totalClicks;
-    this.setState(
-      { totalClicks: total + 1 }
+    this.setState({ totalClicks: total + 1 }
     );
   }
   
@@ -60,18 +75,15 @@ class AllEntriesList extends Component {
           <small>{subject}</small>
     </div>
 
-  //Prepare the component for visual rendering
+//RENDER=========================================================================================================================================================
+
   render() {
     const stuffToShow = this.state.entries; //Create an array 'stuffToShow' and fill it with everything that was added to this component's state.entries array
     return(
-        <div className="p-3" style={greenBorder}>
-          <EntryAddForm onClick={this.handleClick} />
-          <br></br>
-
+        <div className="border p-3 shadow" style={corkBg}>
           <div className="card-columns">
               {stuffToShow.map(this.renderEntry)} {/*Take everything in our stuffToShow array, then map to a new array the table row specified by the renderEntry function for each record*/}
           </div>
-
         </div>
     );
   }

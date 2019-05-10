@@ -18,6 +18,7 @@ class EntryAddForm extends Component {
     }
     this.clearForm = this.clearForm.bind(this);
   }
+//LIFECYCLE METHODS=========================================================================================================================================================
   
   //Define a function that will clear out the values entered into the form
   clearForm() {
@@ -43,36 +44,49 @@ class EntryAddForm extends Component {
       const entryToAdd = this.state.entry; //Create an object called entryToAdd that mimics this component's state.entry; it will be empty but allow the sub-states defined for this component to be filled by the code below
 
       return (
-        <div className="border border-primary p-3"> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
-            <h3>EntryAddForm Sub-Component</h3>
+        <div className="border border-primary p-3 mb-3" onClick={this.props.onClick}> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
+            <h3>Add a New Task</h3>
+            <hr/>
+            <form>
 
-            <input
-                placeholder="Date" className="m-1" type="date" 
-                value={entryToAdd.date}
-                onChange={event => this.setState({
-                  entry: { ...entryToAdd, date: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
-                })}
-            />
+              <div class="form-group">
+                <label for="formGroupExampleInput">Date</label>
+                <input
+                    placeholder="Date" className="form-control m-1" type="date" 
+                    value={entryToAdd.date}
+                    onChange={event => this.setState({
+                      entry: { ...entryToAdd, date: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                    })}
+                />
+              </div>
 
-            <input
-                placeholder="Subject" className="m-1"
-                value={entryToAdd.subject}
-                onChange={event => this.setState({
-                  entry: { ...entryToAdd, subject: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
-                })}
-            />
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Subject</label>
+                <input
+                    placeholder="Subject" className="form-control m-1"
+                    value={entryToAdd.subject}
+                    onChange={event => this.setState({
+                      entry: { ...entryToAdd, subject: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                    })}
+                />
+              </div>
 
-            <input
-                placeholder="Hours" className="m-1"
-                value={entryToAdd.hours}
-                onChange={event => this.setState({
-                  entry: { ...entryToAdd, hours: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
-                })}
-            />
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Hours</label>
+                <input
+                    placeholder="Hours" className="form-control m-1"
+                    value={entryToAdd.hours}
+                    onChange={event => this.setState({
+                      entry: { ...entryToAdd, hours: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                    })}
+                />
+              </div>
 
-            <div style={inline} onClick={this.props.onClick}>
+              <div className="text-right">
                 <button onClick= {this.addEntry} className="btn btn-primary m-1"> Add entry </button>
-            </div>
+              </div>
+
+            </form>
 
         </div>
       );
