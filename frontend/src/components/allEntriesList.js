@@ -12,6 +12,10 @@ let paperYellow = {
   backgroundColor: 'rgb(255, 249, 198)'
 }
 
+let dateFormat = {
+  paddingTop: '7px'
+}
+
 class AllEntriesList extends Component {
   constructor(props) {
     super(props);
@@ -48,10 +52,12 @@ class AllEntriesList extends Component {
   //Predefine how we will visually layout each entry to the user
   renderEntry = ({id, date, subject, hours}) => 
     <div className="card p-3" style={paperYellow} key={id}>
-          <div>{date}</div>
-          <div>{subject}</div>
-          <div>{hours}</div>
-          <DeleteEntryButton identifier={id} onClick={this.handleClick} />
+          <div className="row">
+            <div className="col-9" style={dateFormat}>{date}</div> 
+            <div className="col-3"><DeleteEntryButton identifier={id} onClick={this.handleClick} /></div>
+          </div>
+          <hr></hr>
+          <small>{subject}</small>
     </div>
 
   //Prepare the component for visual rendering

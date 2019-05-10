@@ -11,8 +11,8 @@ class DeleteEntryButton extends Component {
   //Visually render the add form
   render() {
       return (
-        <div onClick={this.props.onClick} className="p-3"> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
-            <button onClick={this.deleteEntry} className="btn btn-outline-primary m-1"> Delete </button>
+        <div onClick={this.props.onClick} className=""> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
+            <button onClick={this.deleteEntry} className="btn"><i class="far fa-trash-alt"></i></button>
         </div>
       );
   };

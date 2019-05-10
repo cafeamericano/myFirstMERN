@@ -10,7 +10,8 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "phoebe17",
-  database: "microstudy"
+  database: "microstudy",
+  dateStrings: true
 });
 
 //MIDDLEWARE================================================================
