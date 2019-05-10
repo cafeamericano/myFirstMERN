@@ -32,7 +32,8 @@ class EntryAddForm extends Component {
   }
 
   //Pre-define the HTTP request that will be called when the add form is submitted
-  addEntry = _ => {
+  addEntry = (event) => {
+      event.preventDefault();
       const entry = this.state.entry;
       fetch(`http://localhost:4000/entries/add?date=${entry.date}&subject=${entry.subject}&hours=${entry.hours}`)
           .catch(err => console.error(err))

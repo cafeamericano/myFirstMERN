@@ -37,7 +37,7 @@ class Main extends Component {
     return(
         <div className="p-3">
           <div className="text-right"> <h5>New Task <i class="fas fa-plus-circle"></i></h5> </div>
-          {/*<EntryAddForm onClick={this.handleClick} onParentStateChange={this.state.totalClicks}/>*/}
+          <EntryAddForm onClick={this.handleClick} onParentStateChange={this.state.totalClicks}/>
           <br></br>
           <AllEntriesList onClick={this.handleClick} onParentStateChange={this.state.totalClicks} />
         </div>
