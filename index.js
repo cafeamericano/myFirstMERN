@@ -1,57 +1,52 @@
-let port=process.env.PORT || 2200
-
 const express = require('express');
 const cors = require('cors');
-var bodyParser = require('body-parser');
-var app = express();
-var firebase = require('firebase');
+var mysql = require('mysql')
+var bodyParser = require('body-parser')
+var app = express()
 
 //DEFINE DB================================================================
 
-var firebaseConfig = {
-    apiKey: "AIzaSyDSevOfF8fYXRT4MFreN62Q9Pp4bXxQSYM",
-    authDomain: "tasks-react-b1a21.firebaseapp.com",
-    databaseURL: "https://tasks-react-b1a21.firebaseio.com",
-    projectId: "tasks-react-b1a21",
-    storageBucket: "tasks-react-b1a21.appspot.com",
-    messagingSenderId: "521561853052",
-    appId: "1:521561853052:web:98ed87895f6c33a5"
-  };
-
-firebase.initializeApp(firebaseConfig);
-
-var taskspool = firebase.firestore().collection('taskspool')
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "phoebe17",
+  database: "microstudy",
+  dateStrings: true
+});
 
 //MIDDLEWARE================================================================
 
 //app.use(express.static('public'));
+const SELECT_ALL_ENTRIES_QUERY = 'SELECT * FROM entries ORDER BY date DESC';
 
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+//CONNECT TO DB================================================================
+
+connection.connect(function(err) {
+if (err) throw err;
+console.log("Connected to MySQL!");
+
 //ROUTES================================================================
-app.get('/entries', function(req, res) {
-    var selectEntries = taskspool.orderBy('date', 'desc');
-    let passToView = [];
-    selectEntries.get().then(recordsRetrieved => {
-        recordsRetrieved.forEach(record => {
-            let x = record.data()
-            let y = record.id
-            x.id = y
-            passToView.push(x)
-            console.log(x)
-        });
-        return res.json({
-            data: passToView
-        });
-    });
-});
+app.get('/entries', (req, res) => {
+    connection.query(SELECT_ALL_ENTRIES_QUERY, (err, results) => {
+        if(err) {
+            return res.send(err)
+        }
+        else{
+            return res.json({
+                data: results
+            })
+        }
+    })
+})
 
 app.get('/entries/add', (req, res) => {
-    const {date, subject, hours} = req.query;
-    const INSERT_ENTRIES_QUERY = `INSERT INTO entries (date, subject, hours) VALUES ('${date}', '${subject}', ${hours})`;
+    const {date, comments} = req.query;
+    const INSERT_ENTRIES_QUERY = `INSERT INTO entries (date, comments) VALUES ('${date}', '${comments}')`;
     connection.query(INSERT_ENTRIES_QUERY, (err, results) => {
         if (err) {
             return res.send(err)
@@ -78,6 +73,8 @@ app.get('/entries/delete', (req, res) => {
 
 //START SERVER================================================================
 
-app.listen(port, function(){
-    console.log(`Server listening on Port ${port}...`)
+});
+
+app.listen(4000, function(){
+    console.log('Server listening on Port 4000...')
 })
