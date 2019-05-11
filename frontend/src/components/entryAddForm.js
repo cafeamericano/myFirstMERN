@@ -46,7 +46,6 @@ class EntryAddForm extends Component {
 
       return (
         <div className="p-3 mb-3 rounded border" onClick={this.props.onClick}> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
-            <div className="text-right"> <h5>New Task <i class="fas fa-plus-circle"></i></h5> </div>
 
             <form>
 

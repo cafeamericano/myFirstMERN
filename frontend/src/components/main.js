@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 //Child components
 import EntryAddForm from './entryAddForm'
 import AllEntriesList from './allEntriesList'
+import AddButton from './addButton'
+
 
 //STYLING=========================================================================================================================================================
 
@@ -15,9 +17,11 @@ class Main extends Component {
     super(props);
     this.state = {
       totalClicks: 0, 
-      entries: []
+      entries: [],
+      entryAddFormIsVisible: false
     }
     this.handleClick = this.handleClick.bind(this);
+    this.showEntryAddForm = this.showEntryAddForm.bind(this);
   }
  
 //LIFECYCLE METHODS=========================================================================================================================================================
@@ -30,13 +34,23 @@ class Main extends Component {
     const total = this.state.totalClicks;
     this.setState({ totalClicks: total + 1 });
   }
+
+  //When handleClick is called, do the following
+  showEntryAddForm() {
+    this.setState({ entryAddFormIsVisible: true });
+  }
   
 //RENDER=========================================================================================================================================================
 
   render() {
+    let content; 
+    if (this.state.entryAddFormIsVisible) {
+      content = <EntryAddForm onClick={this.handleClick} onParentStateChange={this.state.totalClicks}/>
+    }
     return(
         <div className="p-3">
-          <EntryAddForm onClick={this.handleClick} onParentStateChange={this.state.totalClicks}/>
+          <AddButton onClick={this.showEntryAddForm}/>
+          {content}
           <br></br>
           <AllEntriesList onClick={this.handleClick} onParentStateChange={this.state.totalClicks} />
         </div>

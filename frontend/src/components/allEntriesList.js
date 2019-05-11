@@ -78,7 +78,7 @@ class AllEntriesList extends Component {
 //RENDER=========================================================================================================================================================
 
   render() {
-    const stuffToShow = this.state.entries; //Create an array 'stuffToShow' and fill it with everything that was added to this component's state.entries array
+    const stuffToShow = this.state.entries; //Create an array 'stuffToShow' and fill it with everything that was added to this component's state.entries arrayz
     return(
         <div className="border p-3 shadow" style={corkBg}>
           <div className="card-columns">

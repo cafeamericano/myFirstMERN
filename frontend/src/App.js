@@ -3,16 +3,15 @@ import Main from './components/main.js';
 import Header from './components/header';
 
 class App extends Component {
-
+    constructor(props) {
+        super(props);
+    }
+  
   render() {
       return(
           <div>
                 <Header/>
-                <br></br>
-                <div className="container">
-                    <Main/>
-                    <br></br>
-                </div>
+                <div class="container"><Main/></div>
           </div>
       );
   }
