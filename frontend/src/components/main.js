@@ -37,7 +37,11 @@ class Main extends Component {
 
   //When handleClick is called, do the following
   showEntryAddForm() {
-    this.setState({ entryAddFormIsVisible: true });
+    if (this.state.entryAddFormIsVisible === false) {
+      this.setState({ entryAddFormIsVisible: true })
+    } else {
+      this.setState({ entryAddFormIsVisible: false })
+    }
   }
   
 //RENDER=========================================================================================================================================================
