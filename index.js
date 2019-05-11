@@ -24,7 +24,6 @@ var taskspool = firebase.firestore().collection('taskspool')
 //MIDDLEWARE================================================================
 
 //app.use(express.static('public'));
-const SELECT_ALL_ENTRIES_QUERY = 'SELECT * FROM entries ORDER BY date DESC';
 
 app.use(cors());
 
@@ -48,21 +47,6 @@ app.get('/entries', function(req, res) {
         });
     });
 });
-
-/*
-app.get('/entries', (req, res) => {
-    connection.query(SELECT_ALL_ENTRIES_QUERY, (err, results) => {
-        if(err) {
-            return res.send(err)
-        }
-        else{
-            return res.json({
-                data: results
-            })
-        }
-    })
-})
-*/
 
 app.get('/entries/add', (req, res) => {
     const {date, comments} = req.query;
