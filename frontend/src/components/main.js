@@ -49,7 +49,7 @@ class Main extends Component {
   render() {
     let content; 
     if (this.state.entryAddFormIsVisible) {
-      content = <EntryAddForm onClick={this.handleClick} onParentStateChange={this.state.totalClicks}/>
+      content = <EntryAddForm onClick={this.handleClick} onParentStateChange={this.state.totalClicks} toggleAddForm={this.showEntryAddForm}/>
     }
     return(
         <div className="p-3">

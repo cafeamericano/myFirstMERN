@@ -70,7 +70,7 @@ class EntryAddForm extends Component {
                 />
               </div>
 
-              <div className="text-right">
+              <div className="text-right" onClick={this.props.toggleAddForm}>
                 <button onClick= {this.addEntry} className="btn btn-primary m-1"> Add entry </button>
               </div>
 

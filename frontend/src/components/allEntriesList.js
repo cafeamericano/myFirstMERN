@@ -13,8 +13,10 @@ let corkBg = {
   backgroundImage: 'url(' + BackgroundPhoto + ')'
 }
 
-let paperYellow = {
-  backgroundColor: 'rgb(255, 249, 198)'
+let stickyNote = {
+  backgroundColor: 'rgb(255, 249, 198)',
+  fontFamily: 'Gochi Hand',
+  fontSize: '1.7em'
 }
 
 let dateFormat = {
@@ -66,7 +68,7 @@ class AllEntriesList extends Component {
 
   //Predefine how we will visually layout each entry to the user
   renderEntry = ({id, date, comments}) => 
-    <div className="card p-3 shadow-sm" style={paperYellow} key={id}>
+    <div className="card p-3 shadow-sm" style={stickyNote} key={id}>
           <div className="row">
             <div className="col-9" style={dateFormat}>{date}</div> 
             <div className="col-3"><DeleteEntryButton identifier={id} onClick={this.handleClick} /></div>
