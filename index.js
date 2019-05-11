@@ -45,8 +45,8 @@ app.get('/entries', (req, res) => {
 })
 
 app.get('/entries/add', (req, res) => {
-    const {date, subject, hours} = req.query;
-    const INSERT_ENTRIES_QUERY = `INSERT INTO entries (date, subject, hours) VALUES ('${date}', '${subject}', ${hours})`;
+    const {date, comments} = req.query;
+    const INSERT_ENTRIES_QUERY = `INSERT INTO entries (date, comments) VALUES ('${date}', '${comments}')`;
     connection.query(INSERT_ENTRIES_QUERY, (err, results) => {
         if (err) {
             return res.send(err)
