@@ -1,6 +1,7 @@
+let port=process.env.PORT || 2200
+
 const express = require('express');
 const cors = require('cors');
-var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var app = express();
 var firebase = require('firebase');
@@ -77,6 +78,6 @@ app.get('/entries/delete', (req, res) => {
 
 //START SERVER================================================================
 
-app.listen(4000, function(){
-    console.log('Server listening on Port 4000...')
+app.listen(port, function(){
+    console.log(`Server listening on Port ${port}...`)
 })
