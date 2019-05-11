@@ -9,7 +9,7 @@ class App extends Component {
   
   render() {
       return(
-          <div className="mb-5">
+          <div>
                 <Header/>
                 <div class="container"><Main/></div>
           </div>

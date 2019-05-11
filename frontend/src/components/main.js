@@ -55,6 +55,7 @@ class Main extends Component {
         <div className="p-3">
           <AddButton onClick={this.showEntryAddForm}/>
           {content}
+          <br></br>
           <AllEntriesList onClick={this.handleClick} onParentStateChange={this.state.totalClicks} />
         </div>
     );

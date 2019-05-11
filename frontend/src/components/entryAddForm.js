@@ -12,7 +12,8 @@ class EntryAddForm extends Component {
     this.state = { //Set up some empty state.entry values where we can hold the user's entries 
       entry: {
         date: '',
-        comments: ''
+        subject: '',
+        hours: ''
       }
     }
     this.clearForm = this.clearForm.bind(this);
@@ -24,7 +25,8 @@ class EntryAddForm extends Component {
     this.setState({
       entry: {
         date: '',
-        comments: ''
+        subject: '',
+        hours: ''
       }
     });
   }
@@ -33,7 +35,7 @@ class EntryAddForm extends Component {
   addEntry = (event) => {
       event.preventDefault();
       const entry = this.state.entry;
-      fetch(`http://localhost:4000/entries/add?date=${entry.date}&comments=${entry.comments}`)
+      fetch(`http://localhost:4000/entries/add?date=${entry.date}&subject=${entry.subject}&hours=${entry.hours}`)
           .catch(err => console.error(err))
       this.clearForm();
   }
@@ -59,13 +61,23 @@ class EntryAddForm extends Component {
               </div>
 
               <div class="form-group">
-                <label for="formGroupExampleInput2">Comments</label>
+                <label for="formGroupExampleInput2">Subject</label>
                 <input
-                    placeholder="Comments" 
-                    className="form-control m-1"
-                    value={entryToAdd.comments}
+                    placeholder="Subject" className="form-control m-1"
+                    value={entryToAdd.subject}
                     onChange={event => this.setState({
-                      entry: { ...entryToAdd, comments: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                      entry: { ...entryToAdd, subject: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                    })}
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Hours</label>
+                <input
+                    placeholder="Hours" className="form-control m-1"
+                    value={entryToAdd.hours}
+                    onChange={event => this.setState({
+                      entry: { ...entryToAdd, hours: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
                     })}
                 />
               </div>

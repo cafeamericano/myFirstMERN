@@ -7,7 +7,8 @@ class AddButton extends Component {
     this.state = { //Set up some empty state.entry values where we can hold the user's entries 
       entry: {
         date: '',
-        comments: ''
+        subject: '',
+        hours: ''
       }
     }
   }
