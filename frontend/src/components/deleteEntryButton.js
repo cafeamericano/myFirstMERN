@@ -10,6 +10,7 @@ class DeleteEntryButton extends Component {
   //Pre-define the HTTP request that will be called when the add form is submitted
   deleteEntry = _ => {
       const entryToDelete = this.props.identifier
+      console.log(`http://localhost:4000/entries/delete?id=${entryToDelete}`)
       fetch(`http://localhost:4000/entries/delete?id=${entryToDelete}`).catch(err => console.error(err))
   }
 
