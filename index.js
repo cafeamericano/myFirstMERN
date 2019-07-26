@@ -37,6 +37,7 @@ app.listen(4000, function () {
 
 //FUNCTIONS BY ACTION////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Show All Entries
 function showAllEntries(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
@@ -51,6 +52,7 @@ function showAllEntries(req, res){
     })
 }
 
+//Add New Entry
 function addNewEntry(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
@@ -64,6 +66,7 @@ function addNewEntry(req, res){
     });
 }
 
+//Delete an Entry
 function deleteEntry(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
