@@ -6,8 +6,11 @@ var mongo = require('mongodb');
 
 //DEFINE DB================================================================
 
+let databaseName = 'mernTasks';
+let entriesCollection = 'entries';
+
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/mydb";
+var url = `mongodb://localhost:27017/${databaseName}`;
 
 //MIDDLEWARE================================================================
 
@@ -41,8 +44,8 @@ app.listen(4000, function () {
 function showAllEntries(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
-        var dbo = db.db("mydb");
-        dbo.collection("customers").find({}).toArray(function (err, result) {
+        var dbo = db.db(databaseName);
+        dbo.collection(entriesCollection).find({}).toArray(function (err, result) {
             if (err) throw err;
             db.close();
             return res.json({
@@ -56,11 +59,12 @@ function showAllEntries(req, res){
 function addNewEntry(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
-        var dbo = db.db("mydb");
-        var myobj = { name: req.query.date, address: req.query.comments };
-        dbo.collection("customers").insertOne(myobj, function (err, res) {
+        var dbo = db.db(databaseName);
+        var myobj = { dueDate: req.query.dueDate, taskDescription: req.query.taskDescription };
+        dbo.collection(entriesCollection).insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log("1 document inserted");
+            console.log(myobj)
             db.close();
         });
     });
@@ -70,10 +74,10 @@ function addNewEntry(req, res){
 function deleteEntry(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
-        var dbo = db.db("mydb");
+        var dbo = db.db(databaseName);
         var myquery = { _id: mongo.ObjectID(req.query.id)}
         console.log(myquery)
-        dbo.collection("customers").deleteOne(myquery, function (err, obj) {
+        dbo.collection(entriesCollection).deleteOne(myquery, function (err, obj) {
             if (err) throw err;
             console.log("1 document deleted");
             db.close();

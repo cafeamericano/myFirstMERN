@@ -11,8 +11,8 @@ class EntryAddForm extends Component {
     super(props);
     this.state = { //Set up some empty state.entry values where we can hold the user's entries 
       entry: {
-        date: '',
-        comments: ''
+        dueDate: '',
+        taskDescription: ''
       }
     }
     this.clearForm = this.clearForm.bind(this);
@@ -23,8 +23,8 @@ class EntryAddForm extends Component {
   clearForm() {
     this.setState({
       entry: {
-        date: '',
-        comments: ''
+        dueDate: '',
+        taskDescription: ''
       }
     });
   }
@@ -33,7 +33,7 @@ class EntryAddForm extends Component {
   addEntry = (event) => {
       event.preventDefault();
       const entry = this.state.entry;
-      fetch(`http://localhost:4000/entries/add?date=${entry.date}&comments=${entry.comments}`)
+      fetch(`http://localhost:4000/entries/add?dueDate=${entry.dueDate}&taskDescription=${entry.taskDescription}`)
           .catch(err => console.error(err))
       this.clearForm();
   }
@@ -51,21 +51,21 @@ class EntryAddForm extends Component {
                 <label for="formGroupExampleInput">Due Date</label>
                 <input
                     className="form-control m-1" type="date" 
-                    value={entryToAdd.date}
+                    value={entryToAdd.dueDate}
                     onChange={event => this.setState({
-                      entry: { ...entryToAdd, date: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                      entry: { ...entryToAdd, dueDate: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
                     })}
                 />
               </div>
 
               <div class="form-group">
-                <label for="formGroupExampleInput2">Comments</label>
+                <label for="formGroupExampleInput2">Task Description</label>
                 <input
-                    placeholder="Comments" 
+                    placeholder="Task description" 
                     className="form-control m-1"
-                    value={entryToAdd.comments}
+                    value={entryToAdd.taskDescription}
                     onChange={event => this.setState({
-                      entry: { ...entryToAdd, comments: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                      entry: { ...entryToAdd, taskDescription: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
                     })}
                 />
               </div>

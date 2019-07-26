@@ -67,14 +67,14 @@ class AllEntriesList extends Component {
   }
 
   //Predefine how we will visually layout each entry to the user
-  renderEntry = ({_id, address, name}) => 
+  renderEntry = ({_id, dueDate, taskDescription}) => 
     <div className="card p-3 shadow-sm" style={stickyNote} key={_id}>
           <div className="row">
-            <div className="col-9" style={dateFormat}>{name}</div> 
+            <div className="col-9" style={dateFormat}>{dueDate}</div> 
             <div className="col-3"><DeleteEntryButton identifier={_id} onClick={this.handleClick} /></div>
           </div>
           <hr></hr>
-          <small>{address}</small>
+          <small>{taskDescription}</small>
     </div>
 
 //RENDER=========================================================================================================================================================
