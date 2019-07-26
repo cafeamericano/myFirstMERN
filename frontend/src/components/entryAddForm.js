@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+//FIREBASE SETUP#########################################################################
+//#######################################################################################
+
+//=========================================================================================================================================================
+
 //Define styles
 const inline = {
   display: 'inline-block'
@@ -23,6 +28,7 @@ class EntryAddForm extends Component {
   clearForm() {
     this.setState({
       entry: {
+        userID: '',
         dueDate: '',
         taskDescription: ''
       }
@@ -33,7 +39,7 @@ class EntryAddForm extends Component {
   addEntry = (event) => {
       event.preventDefault();
       const entry = this.state.entry;
-      fetch(`http://localhost:4000/entries/add?dueDate=${entry.dueDate}&taskDescription=${entry.taskDescription}`)
+      fetch(`http://localhost:4000/entries/add?userID=${entry.userID}&dueDate=${entry.dueDate}&taskDescription=${entry.taskDescription}`)
           .catch(err => console.error(err))
       this.clearForm();
   }
@@ -46,6 +52,17 @@ class EntryAddForm extends Component {
         <div className="p-3 mb-3 rounded border" onClick={this.props.onClick}> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
 
             <form>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput">UserID</label>
+                <input
+                    className="form-control m-1"
+                    value={sessionStorage.getItem("mernTasksUserID")}
+                    onChange={event => this.setState({
+                      entry: { ...entryToAdd, userID: sessionStorage.getItem("mernTasksUserID")} //..Before the comma is the object to use, after the comma is the alteration to make to it
+                    })}
+                />
+              </div>
 
               <div class="form-group">
                 <label for="formGroupExampleInput">Due Date</label>
