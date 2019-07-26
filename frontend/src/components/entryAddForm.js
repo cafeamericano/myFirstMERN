@@ -48,9 +48,9 @@ class EntryAddForm extends Component {
             <form>
 
               <div class="form-group">
-                <label for="formGroupExampleInput">Date</label>
+                <label for="formGroupExampleInput">Due Date</label>
                 <input
-                    placeholder="Date" className="form-control m-1" type="date" 
+                    className="form-control m-1" type="date" 
                     value={entryToAdd.date}
                     onChange={event => this.setState({
                       entry: { ...entryToAdd, date: event.target.value} //..Before the comma is the object to use, after the comma is the alteration to make to it
