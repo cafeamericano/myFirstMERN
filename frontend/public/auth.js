@@ -80,3 +80,9 @@ signUpButton.addEventListener('click', e => {
         .then(user => console.log(user))
         .catch(e => console.log(e.message));
 })
+
+//Log out
+logoutButton.addEventListener('click', e => {
+    firebase.auth().signOut()
+    window.location.replace("../index.html");
+})

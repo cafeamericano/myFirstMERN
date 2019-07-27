@@ -59,7 +59,7 @@ class AllEntriesList extends Component {
   
   //Make HTTP request, then take response as JSON and use it to set the state.entries of this component to what it returns
   getEntries = _ => {
-      fetch('http://localhost:4000/entries')
+      fetch(`http://localhost:4000/entries?userID=${sessionStorage.getItem('mernTasksUserID')}`)
           .then(response => response.json())
           //Here is where we fill state.entries with all values in the database
           .then(response => this.setState({entries: response.data}))
