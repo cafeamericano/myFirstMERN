@@ -24,24 +24,24 @@ class AllEntriesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalClicks: 0, 
+      totalClicks: 0,
       entries: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
- 
-//LIFECYCLE METHODS=========================================================================================================================================================
+
+  //LIFECYCLE METHODS=========================================================================================================================================================
 
   //Wait for component to mount before performing the getEntries method
-  componentDidMount(){
+  componentDidMount() {
     this.getEntries();
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.getEntries()
   }
 
-//SELF METHODS=========================================================================================================================================================
+  //SELF METHODS=========================================================================================================================================================
 
   //When handleClick is called, do the following
   handleClick() {
@@ -50,37 +50,35 @@ class AllEntriesList extends Component {
     this.setState({ totalClicks: total + 1 }
     );
   }
-  
+
   //Make HTTP request, then take response as JSON and use it to set the state.entries of this component to what it returns
   getEntries = _ => {
-      fetch('http://localhost:4000/entries')
-          .then(response => response.json())
-          //Here is where we fill state.entries with all values in the database
-          .then(response => this.setState({entries: response.data}))
-          .catch(err => console.error(err))
+    fetch('http://localhost:4000/entries')
+      .then(response => response.json())
+      //Here is where we fill state.entries with all values in the database
+      .then(response => this.setState({ entries: response.data }))
+      .catch(err => console.error(err))
   }
 
   //Predefine how we will visually layout each entry to the user
-  renderEntry = ({_id, dueDate, taskDescription}) => 
+  renderEntry = ({ _id, dueDate, taskDescription }) =>
     <div className="card mt-3 mb-3 p-3 shadow-sm" key={_id}>
-          <div className="row">
-            <div className="col-11" style={dateFormat}>{dueDate}</div> 
-            <div className="col-1"><DeleteEntryButton identifier={_id} onClick={this.handleClick} /></div>
-          </div>
-          <hr></hr>
-          <small>{taskDescription}</small>
+      <div className="row">
+        <div className="col-11" style={dateFormat}>{dueDate}</div>
+        <div className="col-1"><DeleteEntryButton identifier={_id} onClick={this.handleClick} /></div>
+      </div>
+      <hr></hr>
+      <small>{taskDescription}</small>
     </div>
 
-//RENDER=========================================================================================================================================================
+  //RENDER=========================================================================================================================================================
 
   render() {
     const stuffToShow = this.state.entries; //Create an array 'stuffToShow' and fill it with everything that was added to this component's state.entries arrayz
-    return(
-        <div className="border p-3 shadow" style={containerBackground}>
-          <div>
-              {stuffToShow.map(this.renderEntry)} {/*Take everything in our stuffToShow array, then map to a new array the table row specified by the renderEntry function for each record*/}
-          </div>
-        </div>
+    return (
+      <div className="border p-3 shadow" style={containerBackground}>
+        {stuffToShow.map(this.renderEntry)} {/*Take everything in our stuffToShow array, then map to a new array the table row specified by the renderEntry function for each record*/}
+      </div>
     );
   }
 }

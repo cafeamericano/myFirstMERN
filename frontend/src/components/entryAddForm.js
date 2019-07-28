@@ -44,7 +44,6 @@ class EntryAddForm extends Component {
 
       return (
         <div style={background} className="p-3 mb-3 rounded border" onClick={this.props.onClick}> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
-
             <form>
 
               <div class="form-group">

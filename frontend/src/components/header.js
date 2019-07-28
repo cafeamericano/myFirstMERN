@@ -11,7 +11,7 @@ class Header extends Component {
   render() {
     return (
       <div id="logo" className="p-3 text-right" >
-          <h1 style={headerStyle}>MERN Tasks</h1>
+        <h1 style={headerStyle}>MERN Tasks</h1>
       </div>
     );
   }
