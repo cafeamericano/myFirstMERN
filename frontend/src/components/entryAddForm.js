@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 //Define styles
-const inline = {
-  display: 'inline-block'
+const background = {
+  background: '#f0ca62'
 }
 
 //Component Main
@@ -43,7 +43,7 @@ class EntryAddForm extends Component {
       const entryToAdd = this.state.entry; //Create an object called entryToAdd that mimics this component's state.entry; it will be empty but allow the sub-states defined for this component to be filled by the code below
 
       return (
-        <div className="p-3 mb-3 rounded border" onClick={this.props.onClick}> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
+        <div style={background} className="p-3 mb-3 rounded border" onClick={this.props.onClick}> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
 
             <form>
 

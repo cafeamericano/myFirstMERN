@@ -9,14 +9,8 @@ import DeleteEntryButton from './deleteEntryButton'
 
 //STYLING=========================================================================================================================================================
 
-let corkBg = {
-  backgroundImage: 'url(' + BackgroundPhoto + ')'
-}
-
-let stickyNote = {
-  backgroundColor: 'rgb(255, 249, 198)',
-  fontFamily: 'Gochi Hand',
-  fontSize: '1.7em'
+let containerBackground = {
+  background: '#d7dbf5'
 }
 
 let dateFormat = {
@@ -68,10 +62,10 @@ class AllEntriesList extends Component {
 
   //Predefine how we will visually layout each entry to the user
   renderEntry = ({_id, dueDate, taskDescription}) => 
-    <div className="card p-3 shadow-sm" style={stickyNote} key={_id}>
+    <div className="card mt-3 mb-3 p-3 shadow-sm" key={_id}>
           <div className="row">
-            <div className="col-9" style={dateFormat}>{dueDate}</div> 
-            <div className="col-3"><DeleteEntryButton identifier={_id} onClick={this.handleClick} /></div>
+            <div className="col-11" style={dateFormat}>{dueDate}</div> 
+            <div className="col-1"><DeleteEntryButton identifier={_id} onClick={this.handleClick} /></div>
           </div>
           <hr></hr>
           <small>{taskDescription}</small>
@@ -82,8 +76,8 @@ class AllEntriesList extends Component {
   render() {
     const stuffToShow = this.state.entries; //Create an array 'stuffToShow' and fill it with everything that was added to this component's state.entries arrayz
     return(
-        <div className="border p-3 shadow" style={corkBg}>
-          <div className="card-columns">
+        <div className="border p-3 shadow" style={containerBackground}>
+          <div>
               {stuffToShow.map(this.renderEntry)} {/*Take everything in our stuffToShow array, then map to a new array the table row specified by the renderEntry function for each record*/}
           </div>
         </div>
