@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 
-let coloredTack = {
-  color: 'red',
-  transform: 'rotate(45deg)'
-}
-
 class DeleteEntryButton extends Component {
 
   //Pre-define the HTTP request that will be called when the add form is submitted
@@ -18,7 +13,7 @@ class DeleteEntryButton extends Component {
   render() {
       return (
         <div onClick={this.props.onClick} className=""> {/*This is where the child component uses its inherited method; when this div is clicked, handleClick is performed on the parent component*/}
-            <button onClick={this.deleteEntry} className="btn"><i style={coloredTack} class="fas fa-thumbtack fa-lg"></i></button>
+            <button onClick={this.deleteEntry} className="btn"><i class="fas fa-times fa-lg"></i></button>
         </div>
       );
   };

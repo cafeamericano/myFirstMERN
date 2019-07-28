@@ -45,7 +45,8 @@ function showAllEntries(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db(databaseName);
-        dbo.collection(entriesCollection).find({}).toArray(function (err, result) {
+        var mysort = { dueDate: -1 };
+        dbo.collection(entriesCollection).find({}).sort(mysort).toArray(function (err, result) {
             if (err) throw err;
             db.close();
             return res.json({
