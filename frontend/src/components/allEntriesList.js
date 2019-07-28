@@ -10,7 +10,7 @@ import DeleteEntryButton from './deleteEntryButton'
 //STYLING=========================================================================================================================================================
 
 let containerBackground = {
-  background: '#d7dbf5'
+  background: '#d7dbf6'
 }
 
 let dateFormat = {
