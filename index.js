@@ -45,8 +45,7 @@ function showAllEntries(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db(databaseName);
-        var query = {userID: req.query.userID}
-        dbo.collection(entriesCollection).find(query).toArray(function (err, result) {
+        dbo.collection(entriesCollection).find({}).toArray(function (err, result) {
             if (err) throw err;
             db.close();
             return res.json({
@@ -61,7 +60,7 @@ function addNewEntry(req, res){
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
         var dbo = db.db(databaseName);
-        var myobj = { userID: req.query.userID, dueDate: req.query.dueDate, taskDescription: req.query.taskDescription };
+        var myobj = { dueDate: req.query.dueDate, taskDescription: req.query.taskDescription };
         dbo.collection(entriesCollection).insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log("1 document inserted");

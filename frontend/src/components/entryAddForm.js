@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 
-//FIREBASE SETUP#########################################################################
-//#######################################################################################
-
-//=========================================================================================================================================================
-
 //Define styles
 const inline = {
   display: 'inline-block'
@@ -38,11 +33,7 @@ class EntryAddForm extends Component {
   addEntry = (event) => {
       event.preventDefault();
       const entry = this.state.entry;
-
-      //The following will hard code the user's FirebaseID
-      let queryURL = `http://localhost:4000/entries/add?userID=${sessionStorage.getItem("mernTasksUserID")}&dueDate=${entry.dueDate}&taskDescription=${entry.taskDescription}`
-      console.log(queryURL)
-      fetch(queryURL)
+      fetch(`http://localhost:4000/entries/add?dueDate=${entry.dueDate}&taskDescription=${entry.taskDescription}`)
           .catch(err => console.error(err))
       this.clearForm();
   }
