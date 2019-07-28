@@ -1,7 +1,7 @@
 //IMPORTS=========================================================================================================================================================
 
 import React, { Component } from 'react';
-import BackgroundPhoto from './cork-wallet.png';
+//import BackgroundPhoto from './cork-wallet.png';
 
 //Child components
 //import EntryAddForm from './entryAddForm'
