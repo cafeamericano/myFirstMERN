@@ -6,11 +6,12 @@ var mongo = require('mongodb');
 
 //DEFINE DB================================================================
 
-let databaseName = 'mernTasks';
-let entriesCollection = 'entries';
-
-var MongoClient = require('mongodb').MongoClient;
-var url = `mongodb://localhost:27017/${databaseName}`;
+const dbImport = require('../config/database.js')
+let mongo = dbImport.mongo
+let databaseName = dbImport.databaseName
+let entriesCollection = dbImport.entriesCollection
+let MongoClient = dbImport.MongoClient
+let url = dbImport.url
 
 //MIDDLEWARE================================================================
 
@@ -20,6 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //ROUTES================================================================
+
+app.get('/', (req, res) => {
+    res.redirect('/')
+});
+
 app.get('/entries', (req, res) => {
     showAllEntries(req, res)
 });
