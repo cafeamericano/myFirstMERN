@@ -5,7 +5,7 @@ var app = express()
 
 //DEFINE DB================================================================
 
-const dbImport = require('/config/database.js')
+const dbImport = require('./config/database.js')
 let mongo = dbImport.mongo
 let databaseName = dbImport.databaseName
 let entriesCollection = dbImport.entriesCollection
