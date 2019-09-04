@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 var bodyParser = require('body-parser')
 var app = express()
-var mongo = require('mongodb');
 
 //DEFINE DB================================================================
 
