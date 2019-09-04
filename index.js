@@ -22,10 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //ROUTES================================================================
 
 app.get('/', (req, res) => {
-    res.redirect('/')
-});
-
-app.get('/entries', (req, res) => {
     showAllEntries(req, res)
 });
 
