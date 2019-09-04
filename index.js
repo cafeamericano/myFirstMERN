@@ -34,8 +34,10 @@ app.get('/entries/delete', (req, res) => {
 
 //START SERVER================================================================
 
-app.listen(4000, function () {
-    console.log('Server listening on Port 4000...')
+var PORT = process.env.PORT || 4000;
+
+app.listen(PORT, function () {
+    console.log('Server listening on Port ' + PORT + '...' )
 })
 
 //FUNCTIONS BY ACTION////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
